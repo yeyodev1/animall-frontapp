@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router'
 import { useToastStore } from '@/stores/toast'
 
 const toastStore = useToastStore()
+// En el admin mobile hay una barra de pestañas abajo: los toasts van encima.
+const route = useRoute()
 
 const icons: Record<string, string> = {
   success: 'fa-solid fa-circle-check',
@@ -12,7 +15,7 @@ const icons: Record<string, string> = {
 
 <template>
   <Teleport to="body">
-    <div class="toasts" aria-live="polite">
+    <div class="toasts" :class="{ 'toasts--raised': route.meta.bare }" aria-live="polite">
       <TransitionGroup name="toast">
         <div
           v-for="toast in toastStore.toasts"
@@ -37,6 +40,14 @@ const icons: Record<string, string> = {
   @include flex(column, stretch, flex-start, 0.6rem);
   z-index: 300;
   max-width: min(360px, calc(100vw - 2.8rem));
+
+  &--raised {
+    bottom: calc(5.6rem + env(safe-area-inset-bottom));
+
+    @include from('lg') {
+      bottom: 1.4rem;
+    }
+  }
 
   &__item {
     @include flex(row, center, flex-start, 0.7rem);
