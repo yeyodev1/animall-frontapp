@@ -2,7 +2,6 @@
 import { computed, ref, useId } from 'vue'
 import type { FilterOption } from '@/types'
 import { catalogCopy } from '@/composables/catalog/copy'
-import DisplayText from './DisplayText.vue'
 
 const props = withDefaults(
   defineProps<{
@@ -39,7 +38,7 @@ const visible = computed(() => {
   <section class="group">
     <h3 class="group__head">
       <button type="button" class="group__toggle" :aria-expanded="open" :aria-controls="id" @click="open = !open">
-        <DisplayText :text="title" />
+        {{ title }}
         <span v-if="selected.length" class="group__badge">{{ selected.length }}</span>
         <i class="fa-solid fa-chevron-down group__chevron" aria-hidden="true"></i>
       </button>
