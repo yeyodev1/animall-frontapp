@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, ref, watch } from 'vue'
 import { site } from '@/config/site'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 
 const props = defineProps<{ modelValue: string }>()
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
