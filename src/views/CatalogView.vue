@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTemplateRef } from 'vue'
 import { useCatalogPage } from '@/composables/catalog/useCatalogPage'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 import CatalogHero from '@/components/catalog/CatalogHero.vue'
 import CatalogSearch from '@/components/catalog/CatalogSearch.vue'
 import SpeciesTabs from '@/components/catalog/SpeciesTabs.vue'
