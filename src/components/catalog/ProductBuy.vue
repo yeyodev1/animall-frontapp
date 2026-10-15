@@ -4,7 +4,7 @@ import type { Product, Variant } from '@/types'
 import { useCartStore } from '@/stores/cart'
 import { useAddToCart } from '@/composables/catalog/useAddToCart'
 import { useCheckout } from '@/composables/cart/useCheckout'
-import { productCopy } from '@/composables/catalog/copy'
+import { productCopy } from '@/config/site'
 import QtyStepper from './QtyStepper.vue'
 
 const props = defineProps<{ product: Product; variant: Variant | undefined }>()
