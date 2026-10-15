@@ -2,9 +2,6 @@
 import { cld, contacts, photos, site, whatsappLink } from '@/config/site'
 
 const year = new Date().getFullYear()
-// TODO copy: mover a site.footer (títulos de columnas y enlace al panel)
-const MENU_TITLE = 'Menú'
-const ADMIN_LABEL = 'Panel admin'
 </script>
 
 <template>
@@ -20,8 +17,8 @@ const ADMIN_LABEL = 'Panel admin'
       </div>
 
       <div class="footer__cols">
-        <nav class="footer__col" :aria-label="MENU_TITLE">
-          <h2 class="footer__heading">{{ MENU_TITLE }}</h2>
+        <nav class="footer__col" :aria-label="site.footer.menuTitle">
+          <h2 class="footer__heading">{{ site.footer.menuTitle }}</h2>
           <RouterLink v-for="link in site.nav" :key="link.to" :to="link.to" class="footer__link">
             {{ link.label }}
           </RouterLink>
@@ -55,7 +52,7 @@ const ADMIN_LABEL = 'Panel admin'
 
     <div class="footer__bottom">
       <p>© {{ year }} {{ site.footer.rights }}</p>
-      <RouterLink to="/login" class="footer__admin">{{ ADMIN_LABEL }}</RouterLink>
+      <RouterLink to="/login" class="footer__admin">{{ site.footer.admin }}</RouterLink>
       <p>
         {{ site.footer.madeBy }}
         <a :href="site.footer.madeByUrl" target="_blank" rel="noopener" class="footer__bakano">{{ site.footer.madeByName }}</a>
