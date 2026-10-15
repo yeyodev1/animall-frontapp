@@ -5,7 +5,6 @@ import { art, cld, site } from '@/config/site'
 import { prefersReducedMotion } from '@/composables/catalog/useReducedMotion'
 import { catalogCopy } from '@/composables/catalog/copy'
 import TennisBall from './TennisBall.vue'
-import DisplayText from './DisplayText.vue'
 
 defineProps<{ total: number | null; superPremium: boolean }>()
 
@@ -34,7 +33,7 @@ onBeforeUnmount(() => ctx?.revert())
           <template v-if="total"> · {{ catalogCopy.results(total) }}</template>
         </p>
         <h1 class="hero__title">
-          <span class="hero__mask"><span class="hero__word"><DisplayText :text="site.catalog.title" /></span></span>
+          <span class="hero__mask"><span class="hero__word">{{ site.catalog.title }}</span></span>
         </h1>
         <p class="hero__lead">{{ site.catalog.lead }}</p>
         <p class="hero__promise"><i class="fa-solid fa-tag" aria-hidden="true"></i>{{ site.promise }}</p>
