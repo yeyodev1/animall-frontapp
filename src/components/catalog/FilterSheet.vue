@@ -2,7 +2,7 @@
 import { ref, toRef } from 'vue'
 import { useBodyScroll } from '@/composables/useBodyScroll'
 import { useFocusTrap } from '@/composables/cart/useFocusTrap'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 
 const props = defineProps<{ open: boolean; total: number; activeCount: number }>()
 const emit = defineEmits<{ close: []; clear: [] }>()
