@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { site } from '@/config/site'
 import type { Product } from '@/types'
 import { speciesIcons, typeIcons } from '@/composables/catalog/productMedia'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 
 const props = defineProps<{ product: Product }>()
 
