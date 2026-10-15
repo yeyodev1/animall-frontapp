@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { productCopy } from '@/composables/catalog/copy'
 import TennisBall from './TennisBall.vue'
-import DisplayText from './DisplayText.vue'
 </script>
 
 <template>
@@ -11,9 +10,9 @@ import DisplayText from './DisplayText.vue'
       <TennisBall class="lost__ball" size="clamp(5rem, 16vw, 9rem)" />
       <span class="lost__big">4</span>
     </div>
-    <h1 class="lost__title"><DisplayText :text="productCopy.notFoundTitle" /></h1>
+    <h1 class="lost__title">{{ productCopy.notFoundTitle }}</h1>
     <p class="lost__text">{{ productCopy.notFoundText }}</p>
-    <RouterLink to="/catalogo" class="btn btn--dark btn--dot"><DisplayText :text="productCopy.notFoundCta" /></RouterLink>
+    <RouterLink to="/catalogo" class="btn btn--dark btn--dot">{{ productCopy.notFoundCta }}</RouterLink>
   </section>
 </template>
 
