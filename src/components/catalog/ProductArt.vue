@@ -38,6 +38,7 @@ const url = computed(() => productImage(props.src, props.width))
 
 <style scoped lang="scss">
 @use 'sass:color';
+@use 'sass:list';
 
 $tones: (
   mint: ($mint, $surface),
@@ -56,10 +57,10 @@ $tones: (
 
   @each $name, $pair in $tones {
     &--#{$name} {
-      background: nth($pair, 1);
+      background: list.nth($pair, 1);
 
       .art__circle {
-        background: nth($pair, 2);
+        background: list.nth($pair, 2);
       }
     }
   }
