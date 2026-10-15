@@ -7,12 +7,11 @@ import ArtImage from './ArtImage.vue'
 const root = ref<HTMLElement | null>(null)
 const store = contacts.find((c) => c.key === 'americas') ?? contacts[0]
 
-// TODO copy: textos alternativos de las fotos del local (site.visit.photos)
 const gallery = [
-  { key: 'entrada', src: photos.entrada, alt: 'Entrada del local de Animall en Plaza Las Américas', depth: 30 },
-  { key: 'estanterias', src: photos.estanterias, alt: 'Estanterías llenas de alimento y accesorios en Animall', depth: -50 },
-  { key: 'neon', src: photos.neon, alt: 'Letrero de neón verde de Animall dentro del local', depth: 60 },
-  { key: 'grooming', src: photos.grooming, alt: 'Área de grooming con tina y mesa profesional', depth: -30 },
+  { key: 'entrada', src: photos.entrada, alt: site.visit.photos.entrada, depth: 30 },
+  { key: 'estanterias', src: photos.estanterias, alt: site.visit.photos.estanterias, depth: -50 },
+  { key: 'neon', src: photos.neon, alt: site.visit.photos.neon, depth: 60 },
+  { key: 'grooming', src: photos.grooming, alt: site.visit.photos.grooming, depth: -30 },
 ]
 
 useGsap(root, (mm) => {
