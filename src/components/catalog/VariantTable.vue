@@ -4,7 +4,6 @@ import { formatCents } from '@/utils/format'
 import type { Variant } from '@/types'
 import { savingOf } from '@/composables/catalog/productMedia'
 import { catalogCopy, productCopy } from '@/composables/catalog/copy'
-import DisplayText from './DisplayText.vue'
 
 defineProps<{ variants: Variant[]; modelValue: number; name: string }>()
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
@@ -34,7 +33,7 @@ const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
       />
       <span class="table__radio" aria-hidden="true"></span>
       <span class="table__size">
-        <DisplayText :text="variant.size" />
+        {{ variant.size }}
         <span v-if="variant.promo" class="table__promo">{{ site.catalog.promoLabel }} {{ variant.promo }}</span>
       </span>
       <span class="table__pvp">
