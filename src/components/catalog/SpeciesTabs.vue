@@ -2,7 +2,7 @@
 import { site } from '@/config/site'
 import type { FilterOption } from '@/types'
 import { speciesIcons } from '@/composables/catalog/productMedia'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 
 defineProps<{ options: FilterOption[]; selected: string[] }>()
 const emit = defineEmits<{ toggle: [value: string]; all: [] }>()
