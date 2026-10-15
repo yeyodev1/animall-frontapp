@@ -4,7 +4,6 @@ import { site } from '@/config/site'
 import type { Product } from '@/types'
 import { speciesIcons, typeIcons } from '@/composables/catalog/productMedia'
 import { catalogCopy } from '@/composables/catalog/copy'
-import DisplayText from './DisplayText.vue'
 
 const props = defineProps<{ product: Product }>()
 
@@ -24,7 +23,7 @@ const tags = computed(() => {
     <p v-if="product.brand" class="info__eyebrow">
       <span class="info__sep" aria-hidden="true"></span>{{ product.brand }}
     </p>
-    <h1 class="info__title"><DisplayText :text="product.name" /></h1>
+    <h1 class="info__title">{{ product.name }}</h1>
     <ul class="info__tags">
       <li v-for="tag in tags" :key="tag.label" class="info__tag">
         <i :class="`fa-solid ${tag.icon}`" aria-hidden="true"></i>{{ tag.label }}
