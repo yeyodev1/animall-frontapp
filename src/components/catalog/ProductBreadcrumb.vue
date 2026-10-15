@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { productCopy } from '@/composables/catalog/copy'
+import { productCopy } from '@/config/site'
 
 defineProps<{ category: string; categorySlug: string; name: string }>()
 </script>
