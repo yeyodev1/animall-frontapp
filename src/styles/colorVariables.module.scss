@@ -40,6 +40,9 @@ $white: $surface;
 $text-light: $surface;
 $text-secondary: $ink-soft;
 
+// Velo detrás de modales y drawers
+$overlay: rgba($ink, 0.55);
+
 // Sombras
 $shadow-sm: 0 1px 2px rgba($ink, 0.05), 0 4px 12px rgba($ink, 0.05);
 $shadow-md: 0 2px 6px rgba($ink, 0.06), 0 18px 40px rgba($ink, 0.1);
