@@ -1,8 +1,9 @@
 // Solo variables. Las fuentes se cargan con <link> en index.html: este archivo
 // se inyecta en cada SFC vía vite.config.ts, así que no debe emitir CSS.
 
-// Bayon: la condensada gigante de la referencia. Solo en mayúsculas y grande.
-$font-display: 'Bayon', 'Impact', sans-serif;
+// Bebas Neue: condensada gigante como la Bayon de la referencia, pero con
+// tildes, Ñ y signos de apertura (Bayon no los trae y caían a otra fuente).
+$font-display: 'Bebas Neue', 'Impact', sans-serif;
 $font-principal: 'Inter Tight', system-ui, sans-serif;
 $font-secondary: $font-principal;
 $font-body: $font-principal;
