@@ -10,16 +10,40 @@ const routes: Array<RouteRecordRaw> = [
     meta: { title: site.name },
   },
   {
+    path: '/catalogo',
+    name: 'Catalog',
+    component: () => import('@/views/CatalogView.vue'),
+    meta: { title: 'Catálogo' },
+  },
+  {
+    path: '/producto/:slug',
+    name: 'Product',
+    component: () => import('@/views/ProductView.vue'),
+    meta: { title: 'Producto' },
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/LoginView.vue'),
-    meta: { title: 'Ingresar', guestOnly: true },
+    meta: { title: 'Ingresar', guestOnly: true, bare: true },
   },
   {
-    path: '/cuenta',
-    name: 'Account',
-    component: () => import('@/views/AccountView.vue'),
-    meta: { title: 'Mi cuenta', requiresAuth: true },
+    path: '/admin',
+    name: 'AdminDashboard',
+    component: () => import('@/views/admin/AdminDashboardView.vue'),
+    meta: { title: 'Panel', requiresAuth: true, requiresAdmin: true, bare: true },
+  },
+  {
+    path: '/admin/productos',
+    name: 'AdminProducts',
+    component: () => import('@/views/admin/AdminProductsView.vue'),
+    meta: { title: 'Productos', requiresAuth: true, requiresAdmin: true, bare: true },
+  },
+  {
+    path: '/admin/pedidos',
+    name: 'AdminOrders',
+    component: () => import('@/views/admin/AdminOrdersView.vue'),
+    meta: { title: 'Pedidos', requiresAuth: true, requiresAdmin: true, bare: true },
   },
   {
     path: '/:pathMatch(.*)*',
@@ -36,7 +60,7 @@ const router = createRouter({
   // baja a la sección; si no, arriba.
   scrollBehavior(to, _from, savedPosition) {
     if (savedPosition) return savedPosition
-    if (to.hash) return { el: to.hash, behavior: 'smooth' }
+    if (to.hash) return { el: to.hash, behavior: 'smooth', top: 80 }
     return { left: 0, top: 0 }
   },
 })
@@ -53,14 +77,18 @@ router.beforeEach(async (to) => {
     return { name: 'Login', query: { next: to.fullPath }, replace: true }
   }
 
+  if (to.meta.requiresAdmin && !userStore.isAdmin) {
+    return { name: 'Home', replace: true }
+  }
+
   if (to.meta.guestOnly && userStore.isAuthenticated) {
-    return { name: 'Account', replace: true }
+    return { name: userStore.isAdmin ? 'AdminDashboard' : 'Home', replace: true }
   }
 })
 
 router.afterEach((to) => {
   const title = to.meta.title as string | undefined
-  document.title = title && title !== site.name ? `${title} — ${site.name}` : site.name
+  document.title = title && title !== site.name ? `${title} — ${site.name}` : `${site.name} · ${site.tagline}`
 })
 
 export default router
