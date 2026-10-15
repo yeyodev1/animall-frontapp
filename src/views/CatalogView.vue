@@ -10,7 +10,6 @@ import FilterSheet from '@/components/catalog/FilterSheet.vue'
 import CatalogToolbar from '@/components/catalog/CatalogToolbar.vue'
 import ProductGrid from '@/components/catalog/ProductGrid.vue'
 import CatalogEmpty from '@/components/catalog/CatalogEmpty.vue'
-import DisplayText from '@/components/catalog/DisplayText.vue'
 
 const sentinel = useTemplateRef<HTMLElement>('sentinel')
 const { query, filters, products, sheetOpen, chips, removeChip, clearAll } = useCatalogPage(sentinel)
@@ -80,7 +79,7 @@ const { items, total, loading, loadingMore, error, hasMore, loadMore, retry } = 
             <span class="catalog__bar-fill" :style="{ transform: `scaleX(${items.length / Math.max(total, 1)})` }"></span>
           </span>
           <button v-if="hasMore" type="button" class="btn btn--ghost btn--dot" :disabled="loadingMore" @click="loadMore">
-            <DisplayText :text="catalogCopy.loadMore" />
+            {{ catalogCopy.loadMore }}
           </button>
         </div>
       </section>
