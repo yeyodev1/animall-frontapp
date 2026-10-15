@@ -104,6 +104,9 @@ export const site = {
 
   services: {
     eyebrow: 'Lo que hacemos',
+    cta: 'Consultar',
+    // {servicio} se reemplaza por el nombre del servicio en minúsculas
+    ctaMessage: 'Hola Animall, quiero información sobre {servicio}',
     title: 'Nuestros servicios',
     items: [
       {
@@ -208,6 +211,18 @@ export const site = {
     title: 'Plaza Las Américas',
     text: 'Pasa por el local: estanterías llenas, área de grooming y alguien que te ayuda a elegir.',
     handle: 'aniMALL',
+    photos: {
+      entrada: 'Entrada del local de Animall en Plaza Las Américas',
+      estanterias: 'Estanterías llenas de alimento y accesorios en Animall',
+      neon: 'Letrero de neón verde de Animall dentro del local',
+      grooming: 'Área de grooming con tina y mesa profesional',
+    },
+  },
+
+  notFound: {
+    title: 'Esta página no existe',
+    text: 'Puede que el enlace esté mal escrito o que la página se haya movido.',
+    cta: 'Volver al inicio',
   },
 
   contact: {
@@ -220,6 +235,8 @@ export const site = {
 
   footer: {
     tagline: 'Te ayudamos a consentir a tu mascota',
+    menuTitle: 'Menú',
+    admin: 'Panel admin',
     rights: 'Animall. Todos los derechos reservados.',
     madeBy: 'Hecho por',
     madeByName: 'Bakano',
@@ -298,3 +315,82 @@ export function whatsappLink(message = 'Hola Animall, quiero más información',
   if (!number) return '#'
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`
 }
+
+/** Textos de la interfaz del catálogo y filtros. */
+export const catalogCopy = {
+  filters: 'Filtros',
+  clear: 'Limpiar',
+  allSpecies: 'Todos',
+  species: 'Mascota',
+  type: 'Tipo',
+  category: 'Categoría',
+  brand: 'Marca',
+  brandSearch: 'Buscar marca',
+  showMore: 'Ver más',
+  showLess: 'Ver menos',
+  sort: 'Ordenar',
+  resultsWord: (n: number) => (n === 1 ? 'producto' : 'productos'),
+  results: (n: number) => (n === 1 ? '1 producto' : `${n} productos`),
+  showResults: (n: number) => (n === 1 ? 'Ver 1 producto' : `Ver ${n} productos`),
+  showing: (shown: number, total: number) => `Mostrando ${shown} de ${total}`,
+  loadMore: 'Cargar más',
+  from: 'desde',
+  added: 'Agregado',
+  searchLabel: 'Buscar en el catálogo',
+  clearSearch: 'Borrar búsqueda',
+  emptyTitle: 'Nada por aquí',
+  emptyHint: 'Prueba con otra palabra o quita algún filtro.',
+  errorTitle: 'No pudimos cargar el catálogo',
+  retry: 'Reintentar',
+  superPremium: 'Super premium',
+  promoOnly: 'Con promo',
+  saving: 'Ahorras',
+  viewProduct: (name: string) => `Ver ${name}`,
+  sizeLabel: (name: string) => `Presentación de ${name}`,
+} as const
+
+/** Textos de la ficha de producto. */
+export const productCopy = {
+  home: 'Inicio',
+  catalog: 'Catálogo',
+  breadcrumb: 'Ruta de navegación',
+  variants: 'Elige la presentación',
+  sizeCol: 'Presentación',
+  qty: 'Cantidad',
+  addToCart: 'Agregar al carrito',
+  orderWhatsapp: 'Pedir este producto por WhatsApp',
+  related: 'También le puede gustar',
+  prev: 'Anterior',
+  next: 'Siguiente',
+  notFoundTitle: 'Este producto se escapó',
+  notFoundText: 'No lo encontramos. Puede que ya no esté en el catálogo o que el enlace tenga un error.',
+  notFoundCta: 'Volver al catálogo',
+  perks: ['Precio Animall ya con descuento', 'Pedido confirmado por WhatsApp', 'Retiro en Plaza Las Américas'],
+  decrease: 'Quitar uno',
+  increase: 'Agregar uno',
+} as const
+
+/** Textos del carrito y el envío del pedido. */
+export const cartCopy = {
+  close: 'Cerrar carrito',
+  back: 'Volver al carrito',
+  stepCart: 'Carrito',
+  stepForm: 'Tus datos',
+  remove: (name: string) => `Quitar ${name} del carrito`,
+  decrease: (name: string) => `Quitar uno de ${name}`,
+  increase: (name: string) => `Agregar uno de ${name}`,
+  qtyOf: (name: string) => `Cantidad de ${name}`,
+  items: (n: number) => (n === 1 ? '1 producto' : `${n} productos`),
+  namePlaceholder: 'Cómo te llamas',
+  phonePlaceholder: '09X XXX XXXX',
+  nameError: 'Escribe tu nombre',
+  phoneError: 'Escribe un teléfono válido',
+  storeError: 'Elige a quién le escribes',
+  sending: 'Enviando…',
+  successTitle: 'Pedido listo',
+  codeLabel: 'Código de tu pedido',
+  openWhatsapp: 'Abrir WhatsApp',
+  blocked: 'Tu navegador bloqueó la ventana. Toca el botón para abrir WhatsApp.',
+  keepShopping: 'Seguir comprando',
+  promo: 'Promo',
+} as const
