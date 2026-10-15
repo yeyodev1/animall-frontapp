@@ -3,7 +3,7 @@ import { site } from '@/config/site'
 import { formatCents } from '@/utils/format'
 import type { Variant } from '@/types'
 import { savingOf } from '@/composables/catalog/productMedia'
-import { catalogCopy, productCopy } from '@/composables/catalog/copy'
+import { catalogCopy, productCopy } from '@/config/site'
 
 defineProps<{ variants: Variant[]; modelValue: number; name: string }>()
 const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
