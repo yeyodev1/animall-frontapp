@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 import TheHeader from '@/layout/TheHeader.vue'
 import TheFooter from '@/layout/TheFooter.vue'
 import ToastList from '@/components/ui/ToastList.vue'
+import CartDrawer from '@/components/cart/CartDrawer.vue'
+
+const route = useRoute()
+// Login y panel admin tienen su propio marco: sin header ni footer de la tienda.
+const bare = computed(() => Boolean(route.meta.bare))
 </script>
 
 <template>
   <div class="app">
-    <TheHeader />
+    <TheHeader v-if="!bare" />
     <main class="app__main">
       <RouterView v-slot="{ Component }">
         <Transition name="page" mode="out-in">
@@ -14,7 +21,8 @@ import ToastList from '@/components/ui/ToastList.vue'
         </Transition>
       </RouterView>
     </main>
-    <TheFooter />
+    <TheFooter v-if="!bare" />
+    <CartDrawer v-if="!bare" />
     <ToastList />
   </div>
 </template>
