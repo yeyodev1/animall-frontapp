@@ -68,6 +68,8 @@ export interface ProductQuery {
   brand?: string
   catalog?: string
   promo?: string
+  /** Solo admin: '1' publicados, '0' ocultos */
+  published?: string
   sort?: string
   page?: number
   limit?: number
