@@ -7,9 +7,10 @@ $text-sm: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
 $text-base: clamp(0.95rem, 0.9rem + 0.25vw, 1.06rem);
 $text-lg: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
 $text-xl: clamp(1.3rem, 1.1rem + 0.9vw, 1.7rem);
-$display-sm: clamp(1.7rem, 1.3rem + 1.8vw, 2.4rem);
-$display-md: clamp(2.1rem, 1.5rem + 2.9vw, 3.4rem);
-$display-lg: clamp(2.6rem, 1.6rem + 4.6vw, 5rem);
+$display-sm: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+$display-md: clamp(2.8rem, 1.8rem + 4.6vw, 5.4rem);
+$display-lg: clamp(3.6rem, 2rem + 8vw, 9rem);
+$display-xl: clamp(4.4rem, 2rem + 13vw, 14rem);
 
 // Espaciado
 $space-xs: 0.5rem;
@@ -31,17 +32,19 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
   font-family: $font-principal;
   font-size: $text-xs;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: $accent-deep;
 }
 
-@mixin display($size: $display-md, $weight: 500) {
+// Bayon solo existe en 400 y se ve bien apretada: line-height corto y siempre en mayúsculas.
+@mixin display($size: $display-md, $color: $accent-deep) {
   font-family: $font-display;
   font-size: $size;
-  font-weight: $weight;
-  font-optical-sizing: auto;
-  line-height: 1.06;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0;
+  text-transform: uppercase;
   text-wrap: balance;
+  color: $color;
 }
