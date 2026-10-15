@@ -2,7 +2,6 @@
 import { site } from '@/config/site'
 import { catalogCopy } from '@/composables/catalog/copy'
 import TennisBall from './TennisBall.vue'
-import DisplayText from './DisplayText.vue'
 
 defineProps<{ error?: string }>()
 const emit = defineEmits<{ clear: []; retry: [] }>()
@@ -14,7 +13,7 @@ const emit = defineEmits<{ clear: []; retry: [] }>()
       <span class="empty__circle"><i class="fa-solid fa-paw"></i></span>
       <TennisBall class="empty__ball" size="3.4rem" />
     </div>
-    <h2 class="empty__title"><DisplayText :text="error ? catalogCopy.errorTitle : catalogCopy.emptyTitle" /></h2>
+    <h2 class="empty__title">{{ error ? catalogCopy.errorTitle : catalogCopy.emptyTitle }}</h2>
     <p class="empty__text">{{ error || site.catalog.empty }} <template v-if="!error">{{ catalogCopy.emptyHint }}</template></p>
     <button v-if="error" type="button" class="btn btn--dark btn--dot" @click="emit('retry')">{{ catalogCopy.retry }}</button>
     <button v-else type="button" class="btn btn--dark btn--dot" @click="emit('clear')">{{ site.catalog.emptyCta }}</button>
