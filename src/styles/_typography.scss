@@ -37,7 +37,7 @@ $ease: cubic-bezier(0.22, 1, 0.36, 1);
   color: $accent-deep;
 }
 
-// Bayon solo existe en 400 y se ve bien apretada: line-height corto y siempre en mayúsculas.
+// Bebas Neue solo existe en 400 y se ve bien apretada: line-height corto y siempre en mayúsculas.
 @mixin display($size: $display-md, $color: $accent-deep) {
   font-family: $font-display;
   font-size: $size;
