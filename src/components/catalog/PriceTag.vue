@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { site } from '@/config/site'
 import { formatCents } from '@/utils/format'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 
 const props = withDefaults(
   defineProps<{ pvc: number; pvp: number; from?: boolean; size?: 'md' | 'lg'; label?: boolean }>(),
