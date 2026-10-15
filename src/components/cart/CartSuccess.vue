@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { site } from '@/config/site'
 import type { Order } from '@/types'
-import { cartCopy } from '@/composables/cart/copy'
+import { cartCopy } from '@/config/site'
 import TennisBall from '@/components/catalog/TennisBall.vue'
 
 defineProps<{ order: Order | null; blocked: boolean }>()
