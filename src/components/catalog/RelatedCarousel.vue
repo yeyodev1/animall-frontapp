@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import type { Product } from '@/types'
 import { productCopy } from '@/composables/catalog/copy'
 import ProductCard from './ProductCard.vue'
-import DisplayText from './DisplayText.vue'
 
 defineProps<{ items: Product[] }>()
 
@@ -19,7 +18,7 @@ function scroll(dir: 1 | -1) {
 <template>
   <section class="related" aria-labelledby="related-title">
     <div class="related__head">
-      <h2 id="related-title" class="related__title"><DisplayText :text="productCopy.related" /></h2>
+      <h2 id="related-title" class="related__title">{{ productCopy.related }}</h2>
       <div class="related__nav">
         <button type="button" class="related__btn" :aria-label="productCopy.prev" @click="scroll(-1)">
           <i class="fa-solid fa-arrow-left"></i>
