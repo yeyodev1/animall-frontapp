@@ -3,7 +3,7 @@ import { orderService } from '@/services/order.service'
 import { useCartStore } from '@/stores/cart'
 import { contacts, type ContactKey } from '@/config/site'
 import type { ApiError, Order } from '@/types'
-import { cartCopy } from './copy'
+import { cartCopy } from '@/config/site'
 
 export type CheckoutStep = 'cart' | 'form' | 'success'
 
