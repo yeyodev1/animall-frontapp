@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { Product } from '@/types'
-import { productCopy } from '@/composables/catalog/copy'
+import { productCopy } from '@/config/site'
 import ProductCard from './ProductCard.vue'
 
 defineProps<{ items: Product[] }>()
