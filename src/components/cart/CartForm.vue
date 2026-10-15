@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { contacts, site } from '@/config/site'
 import { useCheckout } from '@/composables/cart/useCheckout'
-import { cartCopy } from '@/composables/cart/copy'
+import { cartCopy } from '@/config/site'
 
 const { form, errors } = useCheckout()
 </script>
