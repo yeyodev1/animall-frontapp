@@ -9,9 +9,6 @@ export type Visibility = '' | 'published' | 'hidden'
 type ToggleField = 'isPublished' | 'isFeatured'
 
 const PAGE_SIZE = 24
-// El API admin no filtra por visibilidad: con ese filtro se trae la página más
-// grande que permite y se filtra acá. Ver reporte: falta `published` en el back.
-const WIDE_PAGE = 96
 
 export function useAdminProducts() {
   const toast = useToastStore()
@@ -28,6 +25,7 @@ export function useAdminProducts() {
 
   const hasFilters = computed(() => Boolean(filters.search || filters.species || filters.type || filters.visibility))
 
+  // Un switch puede dejar un producto fuera del filtro activo: se oculta al instante.
   const visible = computed(() => {
     if (filters.visibility === 'published') return items.value.filter((p) => p.isPublished)
     if (filters.visibility === 'hidden') return items.value.filter((p) => !p.isPublished)
@@ -45,7 +43,8 @@ export function useAdminProducts() {
       type: filters.type || undefined,
       sort: 'nombre',
       page: page.value,
-      limit: filters.visibility ? WIDE_PAGE : PAGE_SIZE,
+      published: filters.visibility === 'published' ? '1' : filters.visibility === 'hidden' ? '0' : undefined,
+      limit: PAGE_SIZE,
     }
     try {
       const data = await adminService.products(query)
