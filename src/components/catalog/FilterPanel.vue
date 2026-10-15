@@ -4,7 +4,7 @@ import { site } from '@/config/site'
 import type { ProductFilters } from '@/types'
 import type { Facet } from '@/composables/catalog/useCatalogQuery'
 import { typeIcons } from '@/composables/catalog/productMedia'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 import FilterGroup from './FilterGroup.vue'
 
 const props = defineProps<{
