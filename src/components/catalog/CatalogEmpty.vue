@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { site } from '@/config/site'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 import TennisBall from './TennisBall.vue'
 
 defineProps<{ error?: string }>()
