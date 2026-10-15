@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import TennisBall from '@/components/home/TennisBall.vue'
+import { site } from '@/config/site'
 
-// TODO copy: mover a site.notFound
-const copy = {
-  title: 'Esta página no existe',
-  text: 'Puede que el enlace esté mal escrito o que la página se haya movido.',
-  cta: 'Volver al inicio',
-}
+const copy = site.notFound
 </script>
 
 <template>
