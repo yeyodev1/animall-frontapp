@@ -1,6 +1,6 @@
 import { site } from '@/config/site'
 import type { ProductFilters } from '@/types'
-import { catalogCopy } from './copy'
+import { catalogCopy } from '@/config/site'
 import { FACETS, type Facet } from './useCatalogQuery'
 
 export interface ActiveChip {
