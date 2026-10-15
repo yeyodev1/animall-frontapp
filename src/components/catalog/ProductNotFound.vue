@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { productCopy } from '@/composables/catalog/copy'
+import { productCopy } from '@/config/site'
 import TennisBall from './TennisBall.vue'
 </script>
 
