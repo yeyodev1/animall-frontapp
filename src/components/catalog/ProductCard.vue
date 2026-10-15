@@ -7,7 +7,7 @@ import { cheapestVariant, firstPromo, savingPercent, toneFor } from '@/composabl
 import { useVariantPicker } from '@/composables/catalog/useVariantPicker'
 import { useAddToCart } from '@/composables/catalog/useAddToCart'
 import { prefersReducedMotion } from '@/composables/catalog/useReducedMotion'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 import ProductArt from './ProductArt.vue'
 import PriceTag from './PriceTag.vue'
 import PromoSticker from './PromoSticker.vue'
