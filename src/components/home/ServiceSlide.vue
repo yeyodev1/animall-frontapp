@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cld, whatsappLink } from '@/config/site'
+import { cld, site, whatsappLink } from '@/config/site'
 import ArtImage from './ArtImage.vue'
 
 defineProps<{
@@ -7,10 +7,7 @@ defineProps<{
   total: number
 }>()
 
-// TODO copy: mover a site.services.cta
-const CTA = 'Consultar'
-// TODO copy: mover a site.services.ctaMessage
-const message = (title: string) => `Hola Animall, quiero información sobre ${title.toLowerCase()}`
+const message = (title: string) => site.services.ctaMessage.replace('{servicio}', title.toLowerCase())
 
 const icons: Record<string, string> = {
   alimento: 'fa-solid fa-bowl-food',
@@ -34,7 +31,7 @@ const icons: Record<string, string> = {
         rel="noopener"
         data-anim
       >
-        {{ CTA }}
+        {{ site.services.cta }}
       </a>
     </div>
 
