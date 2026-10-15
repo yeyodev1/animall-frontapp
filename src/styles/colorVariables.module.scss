@@ -1,32 +1,34 @@
-// Paleta de Animall. Semántica primero: los componentes hablan de tinta,
-// papel y acento, no de "rosa" o "gris 700".
+// Paleta de Animall, traducida del lenguaje de dontboardme.com: fondos pastel
+// planos, un solo acento fuerte y tinta negra. El verde neón es el del letrero
+// del local; los pasteles salen de mezclarlo con crema.
 @use 'sass:color';
 
 // Acento de marca
-$accent: #2ce605;
-$accent-deep: color.adjust($accent, $lightness: -12%);
-$accent-soft: color.mix($accent, #ffffff, 14%);
+$accent: #2ce605; // verde neón del letrero
+$accent-deep: #0f7a00; // titulares sobre fondos claros (el neón no tiene contraste)
+$accent-soft: #c8efb6;
 
 // Superficies
-$paper: #fdfcfa; // fondo base
-$surface: #ffffff; // superficies elevadas
-$sand: #f1ece6; // bloques suaves
-$line: #e7e1d9; // bordes
+$paper: #f3f3e9; // crema base
+$mint: #ddf6d0; // secciones pastel
+$mint-strong: #c3edae;
+$surface: #ffffff;
+$sand: #ebeadc;
+$line: #dcdccc;
+$night: #0d0d0d; // secciones oscuras, estilo letrero del local
 
 // Texto
-$ink: #191423; // texto principal
-$ink-soft: #4a4552; // texto secundario
-$ink-muted: #8a8590; // terciario / labels
-
-$overlay: rgba(#100c14, 0.55);
+$ink: #0d0d0d;
+$ink-soft: #3d3d36;
+$ink-muted: #77776b;
 
 // Estados
-$success: #3bb77e;
-$warning: #d9a441;
-$info: #6a8caf;
-$danger: #c2554f;
-$success-bg: rgba($success, 0.12);
-$warning-bg: rgba($warning, 0.12);
+$success: $accent-deep;
+$warning: #e0a100;
+$info: #3b6f9e;
+$danger: #d93a2b;
+$success-bg: rgba($accent, 0.16);
+$warning-bg: rgba($warning, 0.14);
 $info-bg: rgba($info, 0.12);
 $danger-bg: rgba($danger, 0.12);
 
@@ -38,7 +40,10 @@ $white: $surface;
 $text-light: $surface;
 $text-secondary: $ink-soft;
 
-// Sombras — suaves, nada de "card de dashboard"
-$shadow-sm: 0 1px 2px rgba($ink, 0.04), 0 4px 12px rgba($ink, 0.04);
-$shadow-md: 0 2px 6px rgba($ink, 0.05), 0 18px 40px rgba($ink, 0.08);
-$shadow-lg: 0 30px 70px rgba($ink, 0.14);
+// Sombras
+$shadow-sm: 0 1px 2px rgba($ink, 0.05), 0 4px 12px rgba($ink, 0.05);
+$shadow-md: 0 2px 6px rgba($ink, 0.06), 0 18px 40px rgba($ink, 0.1);
+$shadow-lg: 0 30px 70px rgba($ink, 0.16);
+
+// Pelota de tenis (detalle lúdico de la referencia)
+$ball: #e4ff3a;
