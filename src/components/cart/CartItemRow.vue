@@ -3,7 +3,7 @@ import type { CartItem } from '@/types'
 import { useCartStore } from '@/stores/cart'
 import { formatCents } from '@/utils/format'
 import { productImage, toneFor } from '@/composables/catalog/productMedia'
-import { cartCopy } from '@/composables/cart/copy'
+import { cartCopy } from '@/config/site'
 import QtyStepper from '@/components/catalog/QtyStepper.vue'
 
 const props = defineProps<{ item: CartItem }>()
