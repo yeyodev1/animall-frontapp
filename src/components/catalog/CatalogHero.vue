@@ -3,7 +3,7 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { gsap } from 'gsap'
 import { art, cld, site } from '@/config/site'
 import { prefersReducedMotion } from '@/composables/catalog/useReducedMotion'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 import TennisBall from './TennisBall.vue'
 
 defineProps<{ total: number | null; superPremium: boolean }>()
