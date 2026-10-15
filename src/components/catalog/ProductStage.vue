@@ -74,6 +74,7 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 @use 'sass:color';
+@use 'sass:list';
 
 $tones: (
   mint: ($mint, $mint-strong, $surface),
@@ -92,18 +93,18 @@ $tones: (
 
   @each $name, $c in $tones {
     &--#{$name} {
-      background: nth($c, 1);
+      background: list.nth($c, 1);
 
       .stage__disc--a {
-        background: nth($c, 2);
+        background: list.nth($c, 2);
       }
 
       .stage__disc--b {
-        background: nth($c, 3);
+        background: list.nth($c, 3);
       }
 
       .stage__disc--c {
-        background: nth($c, 2);
+        background: list.nth($c, 2);
       }
     }
   }
