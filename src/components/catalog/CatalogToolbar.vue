@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { site } from '@/config/site'
-import { catalogCopy } from '@/composables/catalog/copy'
+import { catalogCopy } from '@/config/site'
 import type { ActiveChip } from '@/composables/catalog/activeChips'
 
 defineProps<{ total: number; loading: boolean; sort: string; activeCount: number; chips: ActiveChip[] }>()
