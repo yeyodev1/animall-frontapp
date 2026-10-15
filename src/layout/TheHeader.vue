@@ -1,45 +1,63 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { site } from '@/config/site'
-import { useUserStore } from '@/stores/user'
-import { useBodyScroll } from '@/composables/useBodyScroll'
+import { cld, photos, site, whatsappLink } from '@/config/site'
+import { useCartStore } from '@/stores/cart'
+import { useHideOnScroll } from '@/composables/home/useHideOnScroll'
+import MobileMenu from '@/components/home/MobileMenu.vue'
+import WhatsAppFloat from '@/components/home/WhatsAppFloat.vue'
 
 const route = useRoute()
-const userStore = useUserStore()
-const mobileOpen = ref(false)
+const cart = useCartStore()
+const menuOpen = ref(false)
+const { hidden, scrolled } = useHideOnScroll()
 
-useBodyScroll(mobileOpen)
-
-// Al navegar se cierra el menú móvil.
-watch(() => route.fullPath, () => (mobileOpen.value = false))
+watch(() => route.fullPath, () => (menuOpen.value = false))
 </script>
 
 <template>
-  <header class="header">
+  <header class="header" :class="{ 'is-hidden': hidden && !menuOpen, 'is-scrolled': scrolled }">
     <div class="header__inner">
-      <RouterLink to="/" class="header__logo">{{ site.name }}</RouterLink>
+      <RouterLink to="/" class="header__logo" aria-label="Animall, ir al inicio">
+        <img :src="cld(photos.logo, 'f_auto,q_auto,w_220')" alt="Animall" width="220" height="203" />
+      </RouterLink>
 
-      <nav class="header__nav" :class="{ 'header__nav--open': mobileOpen }">
-        <RouterLink v-for="link in site.nav" :key="link.to" :to="link.to" class="header__link">
+      <nav class="header__nav" aria-label="Principal">
+        <RouterLink
+          v-for="link in site.nav"
+          :key="link.to"
+          :to="link.to"
+          class="header__link"
+          :class="{ 'is-active': route.path === link.to }"
+        >
           {{ link.label }}
         </RouterLink>
-        <RouterLink v-if="userStore.isAuthenticated" to="/cuenta" class="header__link">
-          Mi cuenta
-        </RouterLink>
-        <RouterLink v-else to="/login" class="btn btn--primary header__cta">Ingresar</RouterLink>
       </nav>
 
-      <button
-        class="header__burger"
-        :aria-label="mobileOpen ? 'Cerrar menú' : 'Abrir menú'"
-        :aria-expanded="mobileOpen"
-        @click="mobileOpen = !mobileOpen"
-      >
-        <i :class="mobileOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
-      </button>
+      <div class="header__actions">
+        <a :href="whatsappLink()" class="header__icon header__icon--wa" target="_blank" rel="noopener" :aria-label="site.hero.ctaSecondary">
+          <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+        </a>
+        <button type="button" class="header__icon header__cart" :aria-label="`Abrir carrito, ${cart.count} productos`" @click="cart.open()">
+          <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+          <span v-if="cart.count" class="header__badge">{{ cart.count > 99 ? '99+' : cart.count }}</span>
+        </button>
+        <button
+          type="button"
+          class="header__burger"
+          :aria-expanded="menuOpen"
+          aria-label="Abrir menú"
+          @click="menuOpen = true"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
+
+  <MobileMenu v-model:open="menuOpen" />
+  <WhatsAppFloat />
 </template>
 
 <style scoped lang="scss">
@@ -47,69 +65,161 @@ watch(() => route.fullPath, () => (mobileOpen.value = false))
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba($paper, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid $line;
+  background: transparent;
+  transition:
+    transform 0.45s $ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &.is-scrolled {
+    background: rgba($paper, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba($accent-deep, 0.18);
+  }
+
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
 
   &__inner {
-    @include container;
     @include flex(row, center, space-between, 1rem);
-    padding-block: 0.85rem;
+    height: 64px;
+    padding-inline: 1rem;
+
+    @include from('lg') {
+      height: 76px;
+      padding-inline: 2rem;
+    }
   }
 
   &__logo {
-    @include display($text-xl, 600);
-    color: $ink;
+    flex-shrink: 0;
+    @include focus-ring($accent-deep);
+
+    img {
+      height: 46px;
+      width: auto;
+
+      @include from('lg') {
+        height: 58px;
+      }
+    }
   }
 
   &__nav {
     display: none;
 
-    @include from('md') {
-      @include flex(row, center, flex-end, 1.75rem);
-    }
-
-    &--open {
-      @include until('md') {
-        @include flex(column, stretch, flex-start, 0.5rem);
-        position: fixed;
-        inset: 0;
-        top: 61px;
-        background: $paper;
-        padding: 1.5rem 1.25rem;
-        z-index: 90;
-      }
+    @include from('lg') {
+      @include flex(row, center, center, 2.4rem);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
   &__link {
     @include eyebrow;
-    color: $ink-soft;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid transparent;
-    @include transition;
+    color: $accent-deep;
+    position: relative;
+    padding-block: 0.6rem;
+    @include focus-ring($accent-deep);
 
-    &:hover,
-    &.router-link-active {
-      color: $accent-deep;
-      border-color: $accent;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0.25rem;
+      height: 1.5px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s $ease;
+    }
+
+    &:hover::after,
+    &.is-active::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
   }
 
-  &__cta {
-    padding: 0.6rem 1.3rem;
-    font-size: $text-xs;
+  &__actions {
+    @include flex(row, center, flex-end, 0.5rem);
+  }
+
+  &__icon {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 1.15rem;
+    @include flex(row, center, center);
+    @include transition;
+    @include focus-ring($accent-deep);
+
+    &--wa {
+      display: none;
+      background: $accent-deep;
+      color: $surface;
+
+      @include from('md') {
+        display: flex;
+      }
+
+      &:hover {
+        background: $ink;
+        color: $accent;
+      }
+    }
+  }
+
+  &__cart {
+    background: $ink;
+    color: $surface;
+
+    &:hover {
+      background: $accent;
+      color: $ink;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 5px;
+    border-radius: $radius-pill;
+    background: $ball;
+    color: $ink;
+    border: 2px solid $paper;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
   }
 
   &__burger {
-    font-size: 1.3rem;
-    color: $ink;
-    width: 2.4rem;
-    height: 2.4rem;
-    @include flex(row, center, center);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: $accent;
+    @include flex(column, center, center, 5px);
+    @include focus-ring($accent-deep);
 
-    @include from('md') {
+    @include from('lg') {
       display: none;
+    }
+
+    span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: $ink;
     }
   }
 }
