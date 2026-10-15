@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { site } from '@/config/site'
 import TennisBall from '@/components/catalog/TennisBall.vue'
-import DisplayText from '@/components/catalog/DisplayText.vue'
 
 const emit = defineEmits<{ browse: [] }>()
 </script>
@@ -12,8 +11,8 @@ const emit = defineEmits<{ browse: [] }>()
       <span class="empty__circle"><i class="fa-solid fa-basket-shopping"></i></span>
       <TennisBall class="empty__ball" size="3rem" />
     </div>
-    <p class="empty__title"><DisplayText :text="site.cart.empty" /></p>
-    <RouterLink to="/catalogo" class="btn btn--dark btn--dot" @click="emit('browse')"><DisplayText :text="site.cart.emptyCta" /></RouterLink>
+    <p class="empty__title">{{ site.cart.empty }}</p>
+    <RouterLink to="/catalogo" class="btn btn--dark btn--dot" @click="emit('browse')">{{ site.cart.emptyCta }}</RouterLink>
   </div>
 </template>
 
