@@ -239,8 +239,10 @@ export const site = {
       { value: 'ahorro', label: 'Mayor ahorro' },
       { value: 'nombre', label: 'Nombre A-Z' },
     ],
+    // pvp = precio impreso en la funda (va tachado); pvc = precio que ofrece Animall.
+    // Nunca mostrar "PVC" al cliente.
     priceLabel: 'Precio Animall',
-    pvpLabel: 'PVP',
+    pvpLabel: 'Precio en funda',
     promoLabel: 'Promo',
     addToCart: 'Agregar',
     added: 'Agregado al carrito',
