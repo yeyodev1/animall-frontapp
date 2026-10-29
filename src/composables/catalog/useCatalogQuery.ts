@@ -23,13 +23,12 @@ export function useCatalogQuery() {
   const search = computed(() => text('search'))
   const sort = computed(() => text('sort') || 'relevancia')
   const catalog = computed(() => text('catalog'))
-  const promo = computed(() => text('promo') === '1')
   const selected = computed(() =>
     Object.fromEntries(FACETS.map((f) => [f, list(f)])) as Record<Facet, string[]>,
   )
 
   const activeCount = computed(
-    () => FACETS.reduce((n, f) => n + selected.value[f].length, 0) + (catalog.value ? 1 : 0) + (promo.value ? 1 : 0),
+    () => FACETS.reduce((n, f) => n + selected.value[f].length, 0) + (catalog.value ? 1 : 0),
   )
   const hasAny = computed(() => activeCount.value > 0 || Boolean(search.value))
 
@@ -37,7 +36,6 @@ export function useCatalogQuery() {
     const q: ProductQuery = { sort: sort.value }
     if (search.value) q.search = search.value
     if (catalog.value) q.catalog = catalog.value
-    if (promo.value) q.promo = '1'
     for (const f of FACETS) if (selected.value[f].length) q[f] = selected.value[f].join(',')
     return q
   })
@@ -62,7 +60,6 @@ export function useCatalogQuery() {
     search,
     sort,
     catalog,
-    promo,
     selected,
     activeCount,
     hasAny,
@@ -74,7 +71,6 @@ export function useCatalogQuery() {
     setSearch: (value: string) => update({ search: value.trim() || null }, true),
     setSort: (value: string) => update({ sort: value === 'relevancia' ? null : value }),
     setCatalog: (value: string | null) => update({ catalog: value }),
-    setPromo: (on: boolean) => update({ promo: on ? '1' : null }),
     clear: () => router.push({ query: {} }),
   }
 }

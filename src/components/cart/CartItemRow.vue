@@ -33,7 +33,6 @@ function setQty(qty: number) {
       <RouterLink :to="`/producto/${item.slug}`" class="row__name" @click="emit('navigate')">{{ item.name }}</RouterLink>
       <p class="row__meta">
         <span class="row__size">{{ item.size }}</span>
-        <span v-if="item.promo" class="row__promo">{{ cartCopy.promo }} {{ item.promo }}</span>
       </p>
       <div class="row__foot">
         <QtyStepper
@@ -128,15 +127,6 @@ function setQty(qty: number) {
     background: $paper;
     font-size: 0.72rem;
     font-weight: 600;
-  }
-
-  &__promo {
-    padding: 0.15rem 0.55rem;
-    border-radius: $radius-pill;
-    background: $ball;
-    font-size: 0.68rem;
-    font-weight: 800;
-    text-transform: uppercase;
   }
 
   &__foot {

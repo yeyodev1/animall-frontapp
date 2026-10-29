@@ -3,10 +3,9 @@ import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { gsap } from 'gsap'
 import { productImage, type Tone } from '@/composables/catalog/productMedia'
 import { prefersReducedMotion } from '@/composables/catalog/useReducedMotion'
-import PromoSticker from './PromoSticker.vue'
 import TennisBall from './TennisBall.vue'
 
-const props = defineProps<{ src: string; alt: string; tone: Tone; promo: string | null; brand: string }>()
+const props = defineProps<{ src: string; alt: string; tone: Tone; brand: string }>()
 
 const root = ref<HTMLElement | null>(null)
 const failed = ref(false)
@@ -68,7 +67,6 @@ onBeforeUnmount(() => {
       </div>
     </div>
     <TennisBall class="stage__ball" data-depth="40" size="clamp(2.8rem, 7vw, 4.4rem)" />
-    <PromoSticker v-if="promo" class="stage__sticker" :promo="promo" size="lg" />
   </div>
 </template>
 
@@ -164,12 +162,6 @@ $tones: (
     position: absolute;
     right: 9%;
     bottom: 10%;
-  }
-
-  &__sticker {
-    position: absolute;
-    top: 6%;
-    right: 6%;
   }
 }
 </style>

@@ -34,7 +34,6 @@ const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
       <span class="table__radio" aria-hidden="true"></span>
       <span class="table__size">
         {{ variant.size }}
-        <span v-if="variant.promo" class="table__promo">{{ site.catalog.promoLabel }} {{ variant.promo }}</span>
       </span>
       <span class="table__pvp">
         <span class="table__mlabel">{{ site.catalog.pvpLabel }}</span>
@@ -156,17 +155,6 @@ const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
     @include from('md') {
       flex: 1.5;
     }
-  }
-
-  &__promo {
-    padding: 0.25rem 0.55rem 0.2rem;
-    border-radius: $radius-pill;
-    background: $ball;
-    font-family: $font-principal;
-    font-size: 0.66rem;
-    font-weight: 800;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
   }
 
   &__pvp,

@@ -173,32 +173,31 @@ export const site = {
   },
 
   featured: {
-    eyebrow: 'Con promo',
+    eyebrow: 'Destacados',
     title: 'Los favoritos',
     cta: 'Ver todo el catálogo',
   },
 
   catalogs: {
     eyebrow: 'Catálogos 2026',
-    title: 'Llévatelos en PDF',
+    title: 'Míralos en línea',
     items: [
       {
         key: 'general',
         title: 'Nutrición y cuidado animal',
-        meta: '116 páginas · 16 MB',
+        meta: '116 páginas',
         cover: photos.portadaGeneral,
         file: '/catalogos/animall-2026-nutricion-y-cuidado-animal.pdf',
       },
       {
         key: 'super-premium',
         title: 'Alimento seco super premium',
-        meta: '35 páginas · 6.6 MB',
+        meta: '35 páginas',
         cover: photos.portadaSuperPremium,
         file: '/catalogos/animall-2026-alimento-super-premium.pdf',
       },
     ],
-    view: 'Ver',
-    download: 'Descargar',
+    view: 'Ver catálogo',
   },
 
   bigline: {
@@ -260,7 +259,6 @@ export const site = {
     // Nunca mostrar "PVC" al cliente.
     priceLabel: 'Precio Animall',
     pvpLabel: 'Precio en funda',
-    promoLabel: 'Promo',
     addToCart: 'Agregar',
     added: 'Agregado al carrito',
   },
@@ -343,7 +341,6 @@ export const catalogCopy = {
   errorTitle: 'No pudimos cargar el catálogo',
   retry: 'Reintentar',
   superPremium: 'Super premium',
-  promoOnly: 'Con promo',
   saving: 'Ahorras',
   viewProduct: (name: string) => `Ver ${name}`,
   sizeLabel: (name: string) => `Presentación de ${name}`,
@@ -392,5 +389,4 @@ export const cartCopy = {
   openWhatsapp: 'Abrir WhatsApp',
   blocked: 'Tu navegador bloqueó la ventana. Toca el botón para abrir WhatsApp.',
   keepShopping: 'Seguir comprando',
-  promo: 'Promo',
 } as const

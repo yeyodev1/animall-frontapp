@@ -10,12 +10,10 @@ import FilterGroup from './FilterGroup.vue'
 const props = defineProps<{
   filters: ProductFilters | null
   selected: Record<Facet, string[]>
-  promo: boolean
   superPremium: boolean
 }>()
 const emit = defineEmits<{
   toggle: [facet: Facet, value: string]
-  promo: [on: boolean]
   catalog: [value: string | null]
 }>()
 
@@ -27,15 +25,6 @@ const types = computed(() =>
 <template>
   <div class="panel">
     <div class="panel__switches">
-      <button
-        type="button"
-        class="panel__switch"
-        :class="{ 'panel__switch--on': promo }"
-        :aria-pressed="promo"
-        @click="emit('promo', !promo)"
-      >
-        <i class="fa-solid fa-certificate" aria-hidden="true"></i>{{ catalogCopy.promoOnly }}
-      </button>
       <button
         type="button"
         class="panel__switch"

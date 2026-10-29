@@ -17,14 +17,13 @@ export function useCatalogPage(sentinel: Readonly<Ref<HTMLElement | null>>) {
   const chips = computed(() =>
     activeChips(
       query.selected.value,
-      { search: query.search.value, catalog: query.catalog.value, promo: query.promo.value },
+      { search: query.search.value, catalog: query.catalog.value },
       filters.value,
     ),
   )
 
   function removeChip(chip: ActiveChip) {
     if (chip.facet === 'search') query.setSearch('')
-    else if (chip.facet === 'promo') query.setPromo(false)
     else if (chip.facet === 'catalog') query.setCatalog(null)
     else query.toggle(chip.facet, chip.value)
   }

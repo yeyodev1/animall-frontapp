@@ -33,7 +33,7 @@ useGsap(root, (mm) => {
     <ul class="catalogs__list">
       <li v-for="(item, i) in site.catalogs.items" :key="item.key" class="catalogs__item" :class="`catalogs__item--${i}`">
         <figure class="catalogs__poster" data-cover>
-          <a :href="item.file" target="_blank" rel="noopener" class="catalogs__cover">
+          <a :href="`${item.file}#toolbar=0&navpanes=0`" target="_blank" rel="noopener" class="catalogs__cover">
             <img
               :src="cld(item.cover, 'f_auto,q_auto,w_720')"
               :alt="`Portada del catálogo ${item.title}`"
@@ -47,11 +47,8 @@ useGsap(root, (mm) => {
             <h3 class="catalogs__name">{{ item.title }}</h3>
             <p class="catalogs__meta"><i class="fa-regular fa-file-pdf" aria-hidden="true"></i> {{ item.meta }}</p>
             <div class="catalogs__actions">
-              <a :href="item.file" target="_blank" rel="noopener" class="btn btn--primary btn--dot">
+              <a :href="`${item.file}#toolbar=0&navpanes=0`" target="_blank" rel="noopener" class="btn btn--primary btn--dot">
                 {{ site.catalogs.view }}
-              </a>
-              <a :href="item.file" download class="btn btn--ghost catalogs__dl">
-                <i class="fa-solid fa-arrow-down" aria-hidden="true"></i> {{ site.catalogs.download }}
               </a>
             </div>
           </figcaption>
@@ -158,16 +155,6 @@ useGsap(root, (mm) => {
     @include flex(row, center, flex-start, 0.6rem);
     flex-wrap: wrap;
     margin-top: 1.2rem;
-  }
-
-  &__dl {
-    color: $paper;
-
-    &:hover {
-      background: $paper;
-      border-color: $paper;
-      color: $ink;
-    }
   }
 }
 </style>

@@ -3,14 +3,13 @@ import { computed, onBeforeUnmount, ref, toRef } from 'vue'
 import { gsap } from 'gsap'
 import type { Product } from '@/types'
 import { site } from '@/config/site'
-import { cheapestVariant, firstPromo, savingPercent, toneFor } from '@/composables/catalog/productMedia'
+import { cheapestVariant, savingPercent, toneFor } from '@/composables/catalog/productMedia'
 import { useVariantPicker } from '@/composables/catalog/useVariantPicker'
 import { useAddToCart } from '@/composables/catalog/useAddToCart'
 import { prefersReducedMotion } from '@/composables/catalog/useReducedMotion'
 import { catalogCopy } from '@/config/site'
 import ProductArt from './ProductArt.vue'
 import PriceTag from './PriceTag.vue'
-import PromoSticker from './PromoSticker.vue'
 import VariantChips from './VariantChips.vue'
 
 const props = defineProps<{ product: Product }>()
@@ -25,7 +24,6 @@ const many = computed(() => variants.value.length > 1)
 // hasta que el usuario elige una.
 const touched = ref(false)
 const shown = computed(() => (many.value && !touched.value ? cheapestVariant(props.product) : variant.value))
-const promo = computed(() => variant.value?.promo || (!touched.value ? firstPromo(props.product) : null))
 const percent = computed(() => savingPercent(shown.value))
 
 function pick(i: number) {
@@ -62,7 +60,6 @@ onBeforeUnmount(() => {
   <article ref="root" class="card">
     <ProductArt class="card__art" :src="product.image?.url" :alt="product.name" :tone="tone" :brand="product.brand">
       <span v-if="percent > 0" class="card__off">-{{ percent }}%</span>
-      <PromoSticker v-if="promo" class="card__sticker" :promo="promo" />
     </ProductArt>
 
     <div class="card__body">
@@ -141,19 +138,6 @@ onBeforeUnmount(() => {
     font-size: 0.95rem;
     line-height: 1;
     letter-spacing: 0.02em;
-  }
-
-  &__sticker {
-    position: absolute;
-    top: 0.45rem;
-    right: 0.45rem;
-
-    // Más específico que .sticker para pisar su diámetro
-    .card & {
-      @include until('sm') {
-        --d: 3.4rem;
-      }
-    }
   }
 
   &__body {

@@ -34,10 +34,6 @@ export function cheapestVariant(product: Product): Variant | undefined {
   return [...(product.variants ?? [])].sort((a, b) => a.pvc - b.pvc)[0]
 }
 
-export function firstPromo(product: Product): string | null {
-  return product.variants?.find((v) => v.promo)?.promo ?? null
-}
-
 export const speciesIcons: Record<string, string> = {
   perro: 'fa-dog',
   gato: 'fa-cat',

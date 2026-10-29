@@ -40,11 +40,9 @@ const { items, total, loading, loadingMore, error, hasMore, loadMore, retry } = 
         <FilterPanel
           :filters="filters"
           :selected="query.selected.value"
-          :promo="query.promo.value"
-          :super-premium="query.catalog.value === 'super-premium'"
+            :super-premium="query.catalog.value === 'super-premium'"
           @toggle="query.toggle"
-          @promo="query.setPromo"
-          @catalog="query.setCatalog"
+            @catalog="query.setCatalog"
         />
       </aside>
 
@@ -89,10 +87,8 @@ const { items, total, loading, loadingMore, error, hasMore, loadMore, retry } = 
       <FilterPanel
         :filters="filters"
         :selected="query.selected.value"
-        :promo="query.promo.value"
         :super-premium="query.catalog.value === 'super-premium'"
         @toggle="query.toggle"
-        @promo="query.setPromo"
         @catalog="query.setCatalog"
       />
     </FilterSheet>

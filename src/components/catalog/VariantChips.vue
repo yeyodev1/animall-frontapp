@@ -21,7 +21,6 @@ const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
       @keydown.left.prevent="emit('update:modelValue', (modelValue - 1 + variants.length) % variants.length)"
     >
       {{ variant.size }}
-      <span v-if="variant.promo" class="chips__dot" aria-hidden="true"></span>
     </button>
   </div>
 </template>
@@ -75,17 +74,6 @@ const emit = defineEmits<{ 'update:modelValue': [value: number] }>()
       outline: 2px solid $accent-deep;
       outline-offset: 2px;
     }
-  }
-
-  &__dot {
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: $ball;
-    border: 1.5px solid $ink;
   }
 }
 </style>

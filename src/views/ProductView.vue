@@ -58,7 +58,6 @@ const tone = computed(() => toneFor(slug.value))
             :src="product.image?.url ?? ''"
             :alt="product.name"
             :tone="tone"
-            :promo="variant?.promo ?? null"
             :brand="product.brand"
           />
         </div>
