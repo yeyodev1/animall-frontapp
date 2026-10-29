@@ -6,7 +6,6 @@ import HomeMarquee from '@/components/home/HomeMarquee.vue'
 import HomeServices from '@/components/home/HomeServices.vue'
 import HomeSteps from '@/components/home/HomeSteps.vue'
 import HomeFeatured from '@/components/home/HomeFeatured.vue'
-import HomeCatalogs from '@/components/home/HomeCatalogs.vue'
 import HomeBigline from '@/components/home/HomeBigline.vue'
 import HomeVisit from '@/components/home/HomeVisit.vue'
 import HomeContact from '@/components/home/HomeContact.vue'
@@ -21,7 +20,6 @@ import HomeContact from '@/components/home/HomeContact.vue'
     <HomeServices />
     <HomeSteps />
     <HomeFeatured />
-    <HomeCatalogs />
     <HomeBigline />
     <HomeVisit />
     <HomeContact />

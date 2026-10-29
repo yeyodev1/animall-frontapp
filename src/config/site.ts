@@ -37,8 +37,6 @@ export const photos = {
   estanterias: 'animall/catalogos-2026/tienda-estanterias.jpg',
   neon: 'animall/catalogos-2026/tienda-neon.jpg',
   grooming: 'animall/catalogos-2026/tienda-grooming.jpg',
-  portadaGeneral: 'animall/catalogos-2026/portada-general.png',
-  portadaSuperPremium: 'animall/catalogos-2026/portada-super-premium.png',
 } as const
 
 export const contacts = [
@@ -176,28 +174,6 @@ export const site = {
     eyebrow: 'Destacados',
     title: 'Los favoritos',
     cta: 'Ver todo el catálogo',
-  },
-
-  catalogs: {
-    eyebrow: 'Catálogos 2026',
-    title: 'Míralos en línea',
-    items: [
-      {
-        key: 'general',
-        title: 'Nutrición y cuidado animal',
-        meta: '116 páginas',
-        cover: photos.portadaGeneral,
-        file: '/catalogos/animall-2026-nutricion-y-cuidado-animal.pdf',
-      },
-      {
-        key: 'super-premium',
-        title: 'Alimento seco super premium',
-        meta: '35 páginas',
-        cover: photos.portadaSuperPremium,
-        file: '/catalogos/animall-2026-alimento-super-premium.pdf',
-      },
-    ],
-    view: 'Ver catálogo',
   },
 
   bigline: {

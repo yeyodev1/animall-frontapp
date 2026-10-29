@@ -25,13 +25,6 @@ const year = new Date().getFullYear()
         </nav>
 
         <div class="footer__col">
-          <h2 class="footer__heading">{{ site.catalogs.eyebrow }}</h2>
-          <a v-for="item in site.catalogs.items" :key="item.key" :href="item.file" target="_blank" rel="noopener" class="footer__link">
-            {{ item.title }}
-          </a>
-        </div>
-
-        <div class="footer__col">
           <h2 class="footer__heading">{{ site.contact.eyebrow }}</h2>
           <a
             v-for="c in contacts"
